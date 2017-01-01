@@ -1,0 +1,4 @@
+**/*.pyc
+learn/
+venv/
+mux.egg-info/
