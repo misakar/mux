@@ -31,7 +31,7 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=[
-        'pychalk'
+        "Pygments==2.1.3"
     ],
     classifiers=[
         'Intended Audience :: Developers',

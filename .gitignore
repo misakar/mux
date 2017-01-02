@@ -1,4 +1,6 @@
 **/*.pyc
+tags
 learn/
 venv/
 mux.egg-info/
+.vscode/

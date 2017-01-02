@@ -1,6 +1,5 @@
 import logging
 from mux import muxStreamHandler
-import logging, traceback
 
 # setup
 logger = logging.getLogger(__name__)
