@@ -1,5 +1,5 @@
 import logging
-from mux import MuxStreamHandler
+from mux import MuxStreamHandler, mux_format
 
 # setup
 logger = logging.getLogger(__name__)

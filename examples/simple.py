@@ -10,7 +10,7 @@ logger.setLevel(logging.DEBUG)
 
 # use
 logger.debug("debugging for better result")
-logger.info("nothing goes wrong thus far")
+logger.info("everything ok, so far")
 logger.warning("you should be careful")
 logger.error("oh god! you made a mistake")
-logger.critical("ctrl-c to stop...")
+logger.critical("ctrl-c to stop")

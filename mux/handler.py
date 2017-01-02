@@ -7,13 +7,20 @@
 import os
 import time
 import logging
+import textwrap
 from pygments import highlight
 from pygments.lexers import PythonLexer
 from pygments.formatters import TerminalFormatter
 
 
 def wrap_big_text(message):
-    pass
+    _messages = textwrap.wrap(message)
+    _message = [_messages[0]]
+    # for line in message.split('.')[1:]:
+    for line in _messages[1:]:
+        _message.append(" "*22 + line)
+    return '\n'.join(_message)
+
 
 class MuxStreamHandler(logging.StreamHandler):
     def format(self, record):
@@ -39,11 +46,12 @@ class MuxFormatter(logging.Formatter):
         'TIME': '\033[35m\033[4m'
     }
     default_time_format = "%H:%M:%S"
-    default_message_format = magic_colors.get('TIME')+\
-        '%(asctime)s\033[0m'+' {levelname_fmt}'+' :: '+'%(message)s'
-    exc_temp_file = './__exc_info__.txt'
+    default_message_format = magic_colors.get('TIME') + \
+        '%(asctime)s\033[0m' + ' {levelname_fmt}' + ' :: ' + '%(message)s'
 
     def format(self, record):
+        message = record.msg
+        record.msg = wrap_big_text(message)
         level = record.levelno
         if level >= logging.ERROR:
             self._fmt = self.default_message_format.format(
