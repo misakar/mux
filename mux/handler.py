@@ -75,16 +75,17 @@ class MuxFormatter(logging.Formatter):
         level = record.levelno
         if level >= logging.ERROR:
             self._fmt = self.default_message_format.format(
-                levelname_fmt=self.magic_colors.get('ERROR')+'%(levelname)-9s'+'\033[0m')
+                levelname_fmt=self.magic_colors.get('ERROR')+'%(levelname)+9s'+'\033[0m')
         elif level >= logging.WARNING:
             self._fmt = self.default_message_format.format(
-                levelname_fmt=self.magic_colors.get('WARNING')+'%(levelname)-9s'+'\033[0m')
+                levelname_fmt=self.magic_colors.get('WARNING')+'%(levelname)+9s'+'\033[0m')
         elif level >= logging.INFO:
             self._fmt = self.default_message_format.format(
-                levelname_fmt=self.magic_colors.get('INFO')+'%(levelname)-9s'+'\033[0m')
+                levelname_fmt=self.magic_colors.get('INFO')+'%(levelname)+9s'+'\033[0m')
         elif level >= logging.DEBUG:
             self._fmt = self.default_message_format.format(
-                levelname_fmt=self.magic_colors.get('DEBUG')+'%(levelname)-9s'+'\033[0m')
+                levelname_fmt=self.magic_colors.get('DEBUG')+'%(levelname)+9s'+'\033[0m')
+        self._fmt = '\n' + self._fmt
 
         return super(MuxFormatter, self).format(record)
 
