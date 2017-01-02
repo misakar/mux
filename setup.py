@@ -31,7 +31,7 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=[
-        "Pygments==2.1.3"
+        'pygments',
     ],
     classifiers=[
         'Intended Audience :: Developers',

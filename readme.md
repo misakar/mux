@@ -109,6 +109,7 @@
 <hr/>
 
 + [ ] download progress logging bar
++ [ ] add python3 support
 + [x] big text friendly
 + [x] more useful info for ERROR and CRITICAL level
 + [x] user-defined message string highlight
