@@ -9,16 +9,11 @@ handler.setLevel(logging.DEBUG)
 logger.addHandler(handler)
 logger.setLevel(logging.DEBUG)
 
-@mux_progressbar(logger=logger,
-                 start="init start",
-                 end="init done")
+@mux_progressbar
 def init():
-    time.sleep(5)
-    try:
-        os.mkdir('./magic')
-    except OSError as e:
-        logger.exception('{path} already exist'.format(
-            path=mux_format(os.getcwd(), 'green', 'underline')))
+    time.sleep(4)
 
 if __name__ == '__main__':
+    logger.info('start task')
     init()
+    logger.info('task done')

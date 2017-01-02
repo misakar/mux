@@ -1,3 +1,8 @@
+"""
+    progressbar.py
+    ``````````````
+    mux progressbar
+"""
 import sys
 import time
 import threading
@@ -6,6 +11,10 @@ from .highlight import ansi_escape_codes
 
 
 class MuxProgressBar(threading.Thread):
+    """
+    class <MuxProgressBar>
+        progress bar thread
+    """
     def __init__(self, mux_stop, mux_kill):
         self.mux_stop = mux_stop
         self.mux_kill = mux_kill
@@ -31,22 +40,22 @@ class MuxProgressBar(threading.Thread):
             print '\b\b\b\b '+ansi_escape_codes.get('red')+'Abort!\033[0m',
 
 
-def mux_progressbar(logger, start, end):
-    logger.info(start)
-    def decorator(task):
-        @functools.wraps(task)
-        def task_wrapper(*args, **kwargs):
-            mux_kill = False      
-            mux_stop = False
-            pb = MuxProgressBar(mux_kill, mux_stop)
-            pb.start()
-            try:
-                # run task
-                task(*args, **kwargs)
-                pb.mux_stop = True
-            except KeyboardInterrupt or EOFError:
-                pb.mux_kill = True
-                pb.mux_stop = True
-        return task_wrapper
-    return decorator
-    logger.info(end)
+def mux_progressbar(task):
+    """
+    function <mux_progressbar>
+        a decorator add progress bar to a task
+    """
+    @functools.wraps(task)
+    def task_wrapper(*args, **kwargs):
+        mux_kill = False      
+        mux_stop = False
+        pb = MuxProgressBar(mux_kill, mux_stop)
+        pb.start()
+        try:
+            # run task
+            task(*args, **kwargs)
+            pb.mux_stop = True
+        except KeyboardInterrupt or EOFError:
+            pb.mux_kill = True
+            pb.mux_stop = True
+    return task_wrapper

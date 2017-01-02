@@ -20,7 +20,7 @@ def wrap_big_text(message):
     param <message>:
         the message need to wrap
     """
-    _messages = textwrap.wrap(message)
+    _messages = textwrap.wrap(message, width=60)
     _message = [_messages[0]]
     # for line in message.split('.')[1:]:
     for line in _messages[1:]:

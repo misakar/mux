@@ -12,6 +12,7 @@ logger.info("start project magic")
 try:
     os.mkdir('./magic')
 except OSError as e:
+    magic_path = os.path.join(os.getcwd(), 'magic')
     logger.exception('{path} already exist'.format(
-        path=mux_format(os.getcwd(), 'green', 'underline')))
+        path=mux_format(magic_path, 'green', 'underline')))
 logger.info('start project magic done')

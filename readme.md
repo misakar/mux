@@ -17,15 +17,15 @@
     logger.addHandler(handler)
     logger.setLevel(logging.DEBUG)
     # use
-    logger.debug("debugging for better result")
-    logger.info("everything is ok, so far")
-    logger.warning("you should be careful")
-    logger.error("oh, you made a mistake")
+    logger.debug("let the magic begin")
+    logger.info("everything ok")
+    logger.warning("be careful")
+    logger.error("you made a mistake")
     logger.critical("ctrl-c to stop...")
 
-![screen shot 2017-01-02 at 19 27 46](https://cloud.githubusercontent.com/assets/10671733/21588434/a5dcaa70-d121-11e6-8026-7ce9bb842234.png)
+![simple](https://cloud.githubusercontent.com/assets/10671733/21593016/e53ac9e6-d14d-11e6-8b65-499a85095094.png)
 
-### Elegant exception traceback
+### Exception traceback
 
     # import
     import logging
@@ -42,7 +42,7 @@
     except ZeroDivisionError as e:
         logger.exception('ZeroDivisionError: %s', e)
 
-![screen shot 2017-01-02 at 19 29 11](https://cloud.githubusercontent.com/assets/10671733/21588453/cd960c78-d121-11e6-8b73-31fb6cb0bf6f.png)
+![screen shot 2017-01-03 at 00 04 27](https://cloud.githubusercontent.com/assets/10671733/21593024/fbf74f56-d14d-11e6-8955-0b08fd84cbfb.png)
 
 ##  Big text friendly
 
@@ -62,7 +62,7 @@
     logger.error("oh god! you made a mistake")
     logger.critical("ctrl-c to stop")
 
-![screen shot 2017-01-02 at 19 30 27](https://cloud.githubusercontent.com/assets/10671733/21588499/3ce8d34e-d122-11e6-8535-dcef4d34f548.png)
+![bigtext](https://cloud.githubusercontent.com/assets/10671733/21593033/0e8b2318-d14e-11e6-872a-6887e0c03a6e.png)
 
 ## Highlight customize
 
@@ -81,39 +81,41 @@
         path=mux_format(os.getcwd(), "red", "underline")))
     logger.warning("be careful")
 
-![screen shot 2017-01-02 at 19 35 26](https://cloud.githubusercontent.com/assets/10671733/21588544/b1a4bcf2-d122-11e6-8767-66be82b62283.png)
 
-## Complete example
 
+## Task progress bar
+
+    # import
     import os
+    import time
     import logging
-    from mux import MuxStreamHandler, mux_format
+    from mux import MuxStreamHandler, mux_progressbar, mux_format
     # setup
     logger = logging.getLogger(__name__)
     handler = MuxStreamHandler()
-    handler.setLevel(logging.INFO)
+    handler.setLevel(logging.DEBUG)
     logger.addHandler(handler)
-    logger.setLevel(logging.INFO)
+    logger.setLevel(logging.DEBUG)
     # use
-    logger.info("start project magic")
-    try:
-        os.mkdir('./magic')
-    except OSError as e:
-        logger.exception('{path} already exist'.format(
-            path=mux_format(os.getcwd(), 'green', 'underline')))
-    logger.info('start project magic done')
+    @mux_progressbar
+    def init():
+        time.sleep(4)
+    if __name__ == '__main__':
+        logger.info('start task')
+        init()
+        logger.info('task done')
 
-![screen shot 2017-01-02 at 19 37 57](https://cloud.githubusercontent.com/assets/10671733/21588567/06c01a06-d123-11e6-9565-4b38822bc04c.png)
+![bar](https://cloud.githubusercontent.com/assets/10671733/21593041/206d8882-d14e-11e6-9b64-14b68bb66bd9.gif)
 
 ## ToDo
 <hr/>
 
-+ [ ] download progress logging bar
 + [ ] add python3 support
++ [x] download progress logging bar
 + [x] big text friendly
 + [x] more useful info for ERROR and CRITICAL level
 + [x] user-defined message string highlight
 
 ## License
 
-[MIT]() @ [neo1218](https://github.com/neo1218)
+[MIT](https://github.com/neo1218/mux/blob/master/LICENSE) @ [neo1218](https://github.com/neo1218)
