@@ -14,6 +14,12 @@ from pygments.formatters import TerminalFormatter
 
 
 def wrap_big_text(message):
+    """
+    function <wrap_big_text>:
+        wrap for big text friendly
+    param <message>:
+        the message need to wrap
+    """
     _messages = textwrap.wrap(message)
     _message = [_messages[0]]
     # for line in message.split('.')[1:]:
@@ -23,7 +29,16 @@ def wrap_big_text(message):
 
 
 class MuxStreamHandler(logging.StreamHandler):
+    """
+    class <MuxStreamHandler>
+        mux stream handler as python terminal logging handler
+    """
     def format(self, record):
+        """
+        function <format>
+        param <record>:
+            logRecord object
+        """
         if self.formatter:
             formatter = self.formatter
         else:
@@ -50,6 +65,11 @@ class MuxFormatter(logging.Formatter):
         '%(asctime)s\033[0m' + ' {levelname_fmt}' + ' :: ' + '%(message)s'
 
     def format(self, record):
+        """
+        function <format>
+        param <record>:
+            logRecord object
+        """
         message = record.msg
         record.msg = wrap_big_text(message)
         level = record.levelno
@@ -69,6 +89,11 @@ class MuxFormatter(logging.Formatter):
         return super(MuxFormatter, self).format(record)
 
     def formatException(self, exc_info):
+        """
+        function <formatException>
+        param <exc_info>:
+            exception traceback info
+        """
         result = None
         _result = []
         code = super(MuxFormatter, self).formatException(exc_info)
@@ -80,6 +105,13 @@ class MuxFormatter(logging.Formatter):
         return result
 
     def formatTime(self, record, datefmt=None):
+        """
+        function <formatTime>
+        param <record>
+            logRecord object
+        param <datefmt>
+            datetime formatter, default as self.default_time_format
+        """
         ct = self.converter(record.created) # current time tuple
         if datefmt:
             s = time.strftime(datefmt, ct)

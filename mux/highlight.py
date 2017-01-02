@@ -1,3 +1,9 @@
+"""
+    highlight.py
+    `````````````
+
+    mux_format function for user-custom highlight
+"""
 ansi_escape_codes = {
     "red": "\033[31m",
     "green": "\033[32m",
