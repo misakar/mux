@@ -12,7 +12,10 @@ from pygments.lexers import PythonLexer
 from pygments.formatters import TerminalFormatter
 
 
-class muxStreamHandler(logging.StreamHandler):
+def wrap_big_text(message):
+    pass
+
+class MuxStreamHandler(logging.StreamHandler):
     def format(self, record):
         if self.formatter:
             formatter = self.formatter

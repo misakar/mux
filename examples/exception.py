@@ -1,9 +1,9 @@
 import logging
-from mux import muxStreamHandler
+from mux import MuxStreamHandler
 
 # setup
 logger = logging.getLogger(__name__)
-handler = muxStreamHandler()
+handler = MuxStreamHandler()
 handler.setLevel(logging.ERROR)
 logger.addHandler(handler)
 logger.setLevel(logging.ERROR)

@@ -1,3 +1,3 @@
-from .handler import muxStreamHandler
+from .handler import MuxStreamHandler
 
 __version__ = '0.1'
