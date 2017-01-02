@@ -1,6 +1,6 @@
 # mux
 
-[![PyPI](https://img.shields.io/pypi/v/nine.svg)](https://pypi.python.org/pypi/mux-handler/0.1)
+[![PyPI](https://img.shields.io/pypi/v/nine.svg)](https://pypi.python.org/pypi/mux-handler)
 
 💋 an elegant handler for python terminal logging
 
