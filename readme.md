@@ -81,7 +81,7 @@
         path=mux_format(os.getcwd(), "red", "underline")))
     logger.warning("be careful")
 
-
+![screen shot 2017-01-03 at 00 03 58](https://cloud.githubusercontent.com/assets/10671733/21593163/2cbf7fc2-d14f-11e6-85fb-ab551b3e06a4.png)
 
 ## Task progress bar
 
@@ -105,7 +105,7 @@
         init()
         logger.info('task done')
 
-![bar](https://cloud.githubusercontent.com/assets/10671733/21593041/206d8882-d14e-11e6-9b64-14b68bb66bd9.gif)
+![bar](https://cloud.githubusercontent.com/assets/10671733/21593157/19bcd294-d14f-11e6-9720-10caeffba8a6.gif)
 
 ## ToDo
 <hr/>
