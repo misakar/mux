@@ -6,7 +6,6 @@
 
 import re
 import ast
-import mux
 from setuptools import setup, find_packages
 
 # version
@@ -18,7 +17,7 @@ with open('mux/__init__.py', 'rb') as f:
 
 
 setup(
-    name='mux',
+    name='mux-handler',
     version=version,
     packages=find_packages(),
     url='https://github.com/neo1218/mux',

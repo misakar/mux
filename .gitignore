@@ -2,7 +2,8 @@
 tags
 learn/
 venv/
-mux.egg-info/
+venv3-6/
+mux_handler.egg-info/
 build/
 dist/
 .vscode/

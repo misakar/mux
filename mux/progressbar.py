@@ -37,7 +37,7 @@ class MuxProgressBar(threading.Thread):
             time.sleep(0.2)
             i+=1
         if self.mux_kill == True: 
-            print '\b\b\b\b '+ansi_escape_codes.get('red')+'Abort!\033[0m',
+            print('\b\b\b\b '+ansi_escape_codes.get('red')+'Abort!\033[0m'),
 
 
 def mux_progressbar(task):
